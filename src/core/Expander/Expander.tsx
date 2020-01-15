@@ -53,6 +53,10 @@ interface ExpanderState {
  * Used for openable panel
  */
 export class Expander extends Component<ExpanderProps> {
+  static group = (props: ExpanderGroupProps) => {
+    return <ExpanderGroup {...withSuomifiDefaultProps(props)} />;
+  };
+
   /** State is only used to update the caret-icon */
   state: ExpanderState = {
     openState:
@@ -69,10 +73,6 @@ export class Expander extends Component<ExpanderProps> {
     if (!!onClick) {
       onClick({ openState: notControlled ? !openState : !!open });
     }
-  };
-
-  static group = (props: ExpanderGroupProps) => {
-    return <ExpanderGroup {...withSuomifiDefaultProps(props)} />;
   };
 
   render() {
